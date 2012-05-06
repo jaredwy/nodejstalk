@@ -1,0 +1,31 @@
+var request = require('request'),
+	fs = require('fs'),
+	promise = require('promised-io/promise');
+
+module.exports = logwebsite;
+
+
+
+function logwebsite(url, file) {
+	var def = promise.defer();
+	function doRequest(error,response, body) {
+		if(!error) {
+			fs.writeFile(file, body, function(err) {
+				writenFile(err,body);
+			});
+		}
+		else {
+			def.reject(error);
+		}
+	}
+
+	function writenFile(error, data)  {	
+		if(error) {
+			def.reject(error);
+		} else {
+			def.resolve(data);
+		}
+	}
+	request(url, doRequest);
+	return def;
+}

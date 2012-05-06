@@ -1,0 +1,575 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->  <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	
+	<title>Node.js - Is that it.</title>
+	
+	<meta name="description" content="A jQuery library for modern HTML presentations">
+	<meta name="author" content="Caleb Troughton">
+	<meta name="viewport" content="width=1024, user-scalable=no">
+	
+	<!-- Core and extension CSS files -->
+	<link rel="stylesheet" href="lib/deck.js/core/deck.core.css">
+	<link rel="stylesheet" href="lib/deck.js/extensions/goto/deck.goto.css">
+	<link rel="stylesheet" href="lib/deck.js/extensions/menu/deck.menu.css">
+	<link rel="stylesheet" href="lib/deck.js/extensions/navigation/deck.navigation.css">
+	<link rel="stylesheet" href="lib/deck.js/extensions/status/deck.status.css">
+	<link rel="stylesheet" href="lib/deck.js/extensions/hash/deck.hash.css">
+
+	<link rel="stylesheet" href="lib/deck.js/extensions/codemirror/deck.codemirror.css">
+	
+	<!-- Theme CSS files (menu swaps these out) -->
+
+
+	
+	<!-- <link rel="stylesheet" id="transition-theme-link" href="lib/deck.js/themes/transition/horizontal-slide.css"> -->
+
+
+		<link rel="stylesheet" id="codemaniatheme" href="codemania.css"> 
+ 
+	<!-- Custom CSS just for this page -->
+	<style>
+	.introduction .deck-container {
+  		width: auto;
+  		max-width: 864px;
+  		margin: 16px auto 24px auto;
+  		height: 560px;
+  		font-size: 16px;
+	}
+	.no-boxshadow .introduction .deck-container {
+  		border: 1px solid #e4e4e4;
+	}
+	.boxshadow .introduction .deck-container {
+  		-webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  		-moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  		box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+	}
+	aside {
+		display: none;
+	}
+
+@media print {
+  header, footer {
+    display: none !important;
+  }
+
+}
+</style>
+
+	
+	<script src="lib/deck.js/modernizr.custom.js"></script>
+</head>
+
+<body class="deck-container">
+	<section class="slide" id="title-slide">
+		<h1>Node.js  <br /> Is <b>that</b> it?</h1>
+	</section>
+
+	<section class="slide vertical-center" id="node-js">
+		<aside>
+			i was once half way through a talk on jquery and a guy sheepishly raised his hand and asked what jquery was, so to avoid getting half way through a node.js talk, and blank looks a quick look at node.js 
+		</aside>
+		<div>
+			<h2>Node.js?</h2>
+				<ol style="display: inline-block">
+					<li class="slide">
+						<h3>Javascript</h3>
+					</li>
+					<li class="slide">
+						<h3>Event driven async IO</h3>
+					</li>
+					<li class="slide">
+						<h3>Serverside</h3>
+					</li>
+					<li class="slide">
+						<h3>V8</h3>
+					</li>
+				</ol>
+		</div>
+	</section>
+
+	<section class="slide vertical-center" id="store-o-awesome">
+		<aside>
+			We hear the phrase "evented io" thrown around a lot but what does it actually mean.
+			Well i could come up with a crazy analogy involving spaceships and things to show the problems with IO
+			but instead i will just give you chocolate.
+
+			Cna i please get a volunteer?
+		</aside>
+		<div>
+			<h1>Jared's store o` awesome</h1>
+		</div>
+	</section>
+
+	<section class="slide vertical-center" id="node-js-std">
+		<aside>
+			Fairly extensive standard library
+		</aside>
+		<div>
+		<h2>Standard library</h2>
+		<ol>
+			<li class="slide">
+				<h3>STDIO</h3>
+			</li>
+			<li class="slide">
+				<h3>Sockets</h3>
+			</li>
+			<li class="slide">
+				<h3>Stream</h3>
+			</li>
+			<li class="slide">
+				<h3>File System</h3>
+			</li>
+			<li class="slide">
+				<h3>HTTP</h3>
+			</li>
+			<li class="slide">
+				<h3>DNS</h3>
+			</li>
+		</ol>
+	</div>
+	</section>
+
+	<section class="slide vertical-center" id="node-js-is-that-it">
+		<aside>
+			Fairly extensive but we are software engineers, we are never happy with what we are given
+			we have to tinker we have to play we have to build!
+
+			//TODO: do i want to make this more a ''
+			So this talk will guide you through the process of writing extensions to nodejs in both javascript and c++
+			and some healthy best practices along the way.
+		</aside>
+		<div>
+		<h1>Is that it?</h1>
+	</div>
+	</section>
+
+	<section class="slide" id="because-we-can">
+		<aside>
+			Fairly extensive but we are software engineers, we are never happy with what we are given
+			we have to tinker we have to play we have to build!
+
+			//TODO: do i want to make this more a ''
+			So this talk will guide you through the process of writing extensions to nodejs in both javascript and c++
+			and some healthy best practices along the way.
+		</aside>
+		<div>
+		<h1>Because we can</h1>
+	</div>
+	</section>
+
+
+
+
+	<section class="slide vertical-center">
+		<aside>
+			You want to know your platform before extending it, you have all seen your grandmother talking really slow and loud to anyone with an accent.
+
+			That is what i feel like when i am using a library that is obviously written in by someone who does know what problems the library is trying to solve.
+
+			I am sure you have all experienced it? A c# library written by a java developer that does not allow you to use linq because that just not exist on their platform.
+
+			These are things that are second nature and break your flow as a c# devloper.
+
+			Having said that here are some things node.js developers expect when interoping with your extensions.
+
+
+			Callbacks are a fact of life in node.js it used to have promises.
+			Ryan prefered callbacks so now we have that.
+
+			There is a movement to re introduce promises.
+
+			Most people will expect results to have an error argument passed to their callback.
+			Rather than exceptions.
+
+			There is an expection that your lib app etc will be avalible on npm again
+
+			Async is expected, don't block, dont hide the fact a call has some form of io.
+
+		</aside>
+		<h2>What is in a node</h2>
+		<ul>
+			<li class="slide"> <h3> Callbacks </h3> </li>
+			<li class="slide"><h3> Error arguments </h3></li>
+			<li class="slide"><h3> npm </h3></li>
+			<li class="slide"><h3> Async </h3></li>
+			<li class="slide"> <h3> Composable </h3><li>
+		</ul>
+
+	</section>
+
+	<section class="slide"  id="deps">
+		<aside>
+			with javascript in the browser we get implicit dependecy managment by the order at which we include files
+
+			While it worked, it was not easy. 
+
+			Hard to mantain
+
+			Hard to know what depends on what when adding new files etc
+			
+		</aside>
+		<h2>Dependency Management</h2>
+		<div class="slide">
+			<h3> Sort of </h3>
+			<img src="devtools.jpg"> </img>
+		</div>
+	</section>
+
+
+
+	<section class="slide  vertical-center" id="deps-make2">
+		<aside>
+			Obviously a set of explicit scripts would not work for node.js. 
+
+			How does it work, where does it load from? Do we use paths? Unix guys have known that does not work
+			for some time. C# is still catching up there ;)
+		</aside>
+		<h2>Dependency Management</h2>
+		<h3> Improved </h3>
+	</section>
+
+
+	<section class="slide vertical-center" id="commonjs">
+		<aside>
+			Luckily a bunch of smart people had already thought about the need for a "standard" way of doing javascript on the server side.
+
+			From that we borrow modules from commonjs
+
+			It also has a few other modules things like promises file access, not a ratified standard more just a community of developers
+			who know the importance of standards.
+
+			It is fairly open process if you have an opinion as i am sure you do, then head on over.
+			
+		</aside>
+		<h1>CommonJS</h1>
+
+	</section>
+
+	<section class="slide vertical-center" id="core-libs">
+		<aside>
+			Nodejs will always load it core modules over anything else. Meaning if you declare something named http chances are unless you know
+			what you are doing it wont load.
+
+			To add a dependency on a core lib we simply require it ala the commonjs modules
+			
+		</aside>
+		<h2>Modules</h2>
+		<pre><span class="var">var</span> http = require(<span class="string">'http'</span>);</pre>
+	</section>
+
+	<section class="slide" id="module-loading">
+		<aside>
+			looks in the parents directory in node_module until it his /node_module at the root
+		</aside>
+		<h2>Modules</h2>
+		<ul>
+			<li class="json">
+				<pre><span class="var">var</span> file = require(<span class="string">'/absolute/path/to/file.js'</span>);</pre>
+			 </li>
+			<li class="native slide"> 
+				<pre><span class="var">var</span> file = require(<span class="string">'./file'</span>);</pre> 
+			</li>
+			<li class="javscript slide"> 
+				<pre><span class="var">var</span> nonecore = require(<span class="string">'nonecore'</span>);</pre>  
+			 </li>
+		</ul>
+	</section>
+
+	</section>
+
+	<section class="slide vertical-center" id="store-o-awesome">
+		<div>
+			<h1>To the code!</h1>
+		</div>
+	</section>
+
+	<section class="slide vertical-center" id="dependency-management">
+		<aside>
+			As you saw in the second example we were using pretty heavy use of the node_modules folder for our dependencies in our local folder.
+			And as you hopefully remember the first search path is .
+
+
+
+			We *could* ship our entire app with every dependency it needs. There are those in the node community that say you should. For any extension that is a application. I will let the audience form their own opinion about that, as the node community is very much still out
+
+
+			We could ask our users to ensure they ahve them on the system some where when they run our app, this wont work.
+
+			Luckily a very smart man by the name of isaac has solved all our managment and distribution woahs.
+
+		</aside>
+		<h2> Node Dependencies </h2>
+			<ul>
+				<li> <h3> Local dependencies </h3></li>
+				<li> <h3> Transitive dependencies </h3></li>
+			</ul>
+	</section>
+
+
+
+	<section class="slide  vertical-center" id="npm-do">
+		<aside>
+			We *could* ship our entire app with every dependency it needs. We could ask our users to ensure they ahve them on the system
+			ala autotools
+
+			Or, we could do the use friendly thing and use npm.
+
+			
+		</aside>
+		<h2>npm</h2>
+		<ul>
+			<li class="slide"> <h3> Install  </h3> </li>
+			<li class="slide"><h3> Update </h3></li>
+			<li class="slide"><h3> List </h3></li>
+			<li class="slide"> <h3>Link </h3></li>
+			<li class="slide"><h3> Init </h3></li>
+			
+		</ul>
+
+	</section>
+
+
+	<section class="slide vertical-center" id="npm-install">
+		<aside>
+			Install
+
+			This installs a package a package can either be global 
+
+			a package can exist on your hard drive 
+			
+		</aside>
+		<h2>Install</h2>
+		<ul>
+		<li class="slide">
+			<h3>Locally</h3>
+		<pre class="slide"> <span class="prompt">jared@floaty-spork</span>:<span class="string">~/Code</span><span class="dis">$</span> npm install request
+npm <span class="http">http</span> <span class="verb">GET</span> https://registry.npmjs.org/request
+npm <span class="http">http</span> 304 https://registry.npmjs.org/request
+request@2.9.153 ../node_modules/request
+		</pre>
+	</li>
+	</section>
+
+
+	<section class="slide vertical-center" id="npm-install-2">
+		<aside>
+			Global
+			
+		</aside>
+		<h2>Install</h2>
+		<ul>
+		<li class="slide">
+		<h3>Global</h3>
+		<pre class="slide"> <span class="prompt">jared@floaty-spork</span>:<span class="string">~/Code</span><span class="dis">$</span> npm install request -g
+npm <span class="http">http</span> <span class="verb">GET</span> https://registry.npmjs.org/request
+npm <span class="http">http</span> 304 https://registry.npmjs.org/request
+request@2.9.153 /usr/local/lib/node_modules/request </pre>
+	</li>
+	</section>
+
+
+
+	<section class="slide vertical-center" id="npm-update">
+		<aside>
+			Update
+
+			This does exactly what it says
+			
+		</aside>
+		<h2>Update</h2>
+		<ul>
+			<li class="slide"> <h3> Updates </h3>  </li>
+		</ul>
+
+	</section>
+
+
+	<section class="slide vertical-center" id="npm-List">
+		<aside>
+			List
+
+			Again exactly what it does
+		</aside>
+		<h2>List</h2>
+		<ul>
+			<li class="slide"> <h3> Lists  </h3> </li>
+		</ul>
+
+	</section>
+
+
+	<section class="slide vertical-center" id="npm-link">
+		<aside>
+			Link
+
+			Is a hard one to describe it is better to show it. But it allows you to link libraries you are currently developing into your global to test them
+
+			It also allows you to link from your develop to the global 
+
+			Why would you want to do that? Well lets say you have a few different apps using a test framework but you find a limitation 
+			You can link to the global make the changes then have those changes automatically reflected in every place
+
+		</aside>
+		<h2>Link</h2>
+		<ul>
+			<li class="slide"> <h3>  Dev -> Global  </h3></li>
+			<li class="slide"> <h3> Global -> Dev  </h3></li>
+			
+		</ul>
+	</section>
+
+	<section class="slide vertical-center" id="npm-init">
+		<aside>
+		Init allows you to quickly create a node.js package for your 
+
+		There is much more that it can do but we wont cover it today.
+		It is well worth looking into what it can do
+		run your test
+		include development dependencies ie test frameworks
+		lock down to specific node versions
+		lock down specific dependencies
+		</aside>
+		<h2>Init</h2>
+		<ul>
+			<li class="slide"> <h3> Builds a package.json  </h3> </li>
+			<li class="slide"> <h3> Sane defaults </h3></li>
+			<li class="slide"> <h3> Very useful </h3></li>
+		</ul>
+	</section>
+
+
+	<section class="slide vertical-center" id="npm-publish">
+		<aside>
+			publish allows you to gain your fame and your friends
+
+			First you need a user for the npm registry Add user does that
+		</aside>
+		<h2>Publish</h2>
+		<ul>
+			<li class="slide">   <h3> Adduser  </h3> </li>
+			<li class="slide">   <h3> Publish </h3></li>
+			<li class="slide">   <h3> ???? </h3></li>
+			<li class="slide">   <h3> Friends </h3> </li>
+			<li class="slide">   <h3> Profit </h3> </li>
+		</ul>
+	</section>
+
+
+	<section class="slide vertical-center" id="native-modules">
+		<aside>
+			Now we have done that! What happens if we hit a library we want to use in node.js that is only native?
+			What if we are just sick of writing ajavascript?
+
+			We do have a choice! 
+
+			C++ you guys remember that language? Lots of fun!
+
+			Manually manage memory, pointers, strange class heirichy friends can touch your privates!
+
+			Node.js provides an abstraction over the threadpool and all the evented stuff called libuv
+
+			It does abstract some of the pain of building these things through a provided build system called node-waf
+		</aside>
+		<h2>What makes a native module?</h2>
+		<ul>
+			<li class="slide"> <h3> C++ </h3> </li>
+			<li class="slide"> <h3> Libuv </h3> </li>
+			<li class="slide"> <h3> node-waf </h3></li>
+		</ul>
+	</section>
+
+	<section class="slide vertical-center" id="native-modules-why">
+		<aside>
+			Nodejs standard lib is fairly complete so why would we need to write a c++ module?
+		</aside>
+		<h2>Why?</h2>
+		<ul>
+			<li class="slide"> <h3> Native libraries </h3> </li>
+			<li class="slide"><h3> Need more threads </h3></li>
+			<li class="slide"> <h3> Faster <span class="slide"> ? </span> </h3></li>
+		</ul>
+	</section>
+
+	<section class="slide vertical-center" id="native-modules-why-tips">
+		<aside>
+		Crossing the js -> c++ barrier can be expensive. Your milage will vary but in most cases it will be much slower
+		the percentage will depend on the module type
+
+		I will cover the speed different in demoing how to write one
+		</aside>
+		<h2>Faster?</h2>
+		<ul>
+			<li class="slide"> <h3> JS -> C++ barrier</h3> </li>
+			<li class="slide"> <h3> V8 Heap </h3></li>
+			<li class="slide"> <h3> Threadpool </h3></li>
+			<li class="slide"> <h3> Onto the fun! </h3></li>
+		</ul>
+	</section>
+
+	<section class="slide vertical-center" id="native-modules-npm">
+		<aside>
+		
+		</aside>
+		<h2>Native modules & npm</h2>
+		<pre>
+"scripts": {
+	"install": "node-waf configure build"
+ },
+    	</pre>
+	</section>
+
+
+	<section class="slide vertical-center" id="native-modules-npm">
+		<aside>
+		
+		</aside>
+		<h2>Me.</h2>
+		<ul>
+			<li> <h3> Twitter: rioter </h3> </li>
+			<li> <h3> Email: jared.wyles@gmail.com </h3></li>
+		</ul>
+	</section>
+
+<footer>
+	
+</footer>
+
+<script src="lib/deck.js/jquery-1.7.min.js"></script>
+
+<!-- Deck Core and extensions -->
+<script src="lib/deck.js/core/deck.core.js"></script>
+<script src="lib/deck.js/extensions/presenterview/deck.presenterview.js"></script>
+<script src="lib/deck.js/extensions/hash/deck.hash.js"></script>
+<script src="lib/deck.js/extensions/menu/deck.menu.js"></script>
+<script src="lib/deck.js/extensions/goto/deck.goto.js"></script>
+<script src="lib/deck.js/extensions/status/deck.status.js"></script>
+<script src="lib/deck.js/extensions/navigation/deck.navigation.js"></script>
+
+<script> 
+$(function() {
+	// Deck initialization
+	$.deck('.slide');
+	
+	$('#style-themes').change(function() {
+		$('#style-theme-link').attr('href', $(this).val());
+	});
+	
+	$('#transition-themes').change(function() {
+		$('#transition-theme-link').attr('href', $(this).val());
+	});
+});
+
+
+</script>
+<!-- Specific to this page -->
+<!-- <script src="introduction.js"></script> -->
+	
+</body>
+</html>

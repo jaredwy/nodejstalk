@@ -1,0 +1,158 @@
+@charset "UTF-8";
+.deck-container {
+	background-color: #F9F9F9;
+	font-family: 'Lato';
+	font-size: 32px;
+}
+
+.slide {
+	width: 100%;
+	height: 100%;
+}
+
+.deck-container section.vertical-center {
+	display: table;
+}
+
+.deck-container section.vertical-center div  {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.deck-container section.vertical-center div  {
+	display: table-cell;
+	vertical-align: middle;
+}
+.deck-container li.deck-current h3  {
+background-color: #555;
+color: white;
+padding-left: 15px;
+padding-right: 15px;
+/*
+    background-color: #DD716B;
+*/
+}
+
+#because-we-can {
+	margin-top: 50px;
+	background-image: url('minecraft.png');
+	width: 1024px;
+	height: 720px;
+		background-repeat: no-repeat;
+
+}
+
+#because-we-can h1 {
+
+	color: white;
+
+}
+
+
+
+
+
+body.deck-container section.slide ul,
+body.deck-container section.slide ol  {
+	list-style: none;
+}
+
+body.deck-container .vertical-center ul,
+body.deck-container .vertical-center ol  {
+	display: inline-block;
+}
+
+
+
+.deck-container .slide aside {
+	display: none;
+}
+
+
+.deck-container section.slide {
+	width: 980px;
+	height: 720px;
+	padding: 24px;
+	margin: 0 auto;
+}
+
+.deck-container .slide pre {
+	padding: 0.4em;
+	display: block;
+	border: 1px solid #CCC;
+	margin: 0px 0px 12px 0px;
+	background-color: white;
+
+}
+
+
+.deck-container .slide pre span.var {
+	color: #DE3364;
+}
+.deck-container .slide pre span.string {
+	color: #27A874;
+}
+
+.deck-container .slide pre span.http {
+	color: #0F7C27;
+}
+.deck-container .slide pre span.verb {
+	color: #CD2F7C;
+}
+
+.deck-container .slide pre span.prompt {
+	color: #F79639;
+}
+
+.deck-container .slide pre span.dis {
+	color: #E93652;
+}
+
+
+
+
+.deck-container > .slide .deck-before, .deck-container > .slide .deck-previous {
+  opacity: 0.4;
+}
+.deck-container > .slide .deck-before:not(.deck-child-current) .deck-before, .deck-container > .slide .deck-before:not(.deck-child-current) .deck-previous, .deck-container > .slide .deck-previous:not(.deck-child-current) .deck-before, .deck-container > .slide .deck-previous:not(.deck-child-current) .deck-previous {
+  opacity: 1;
+}
+.deck-container > .slide .deck-child-current {
+  opacity: 1;
+}
+
+
+.deck-container .slide h1 {
+	font-family: 'Carter One';
+}
+.slide h2 > h3 {
+		background-color: #223848;
+}
+
+body.deck-container .slide h2 {
+	font-size: 52px;
+	background-color: #223848;
+	display: inline-block;
+
+	border: none;
+	padding: 5px 120px  5px 15px;
+	color: #FF9D71;
+}
+
+.deck-container .slide ::-moz-selection {
+  background: #08455f;
+  color: #fff;
+}
+.deck-container .slide ::selection {
+  background: #08455f;
+  color: #fff;
+}
+.deck-container .slide a, .deck-container .slide a:hover, .deck-container .slide a:focus, .deck-container .slide a:active, .deck-container .slide a:visited {
+  color: #599;
+  text-decoration: none;
+}
+.deck-container .slide a:hover, .deck-container .slide a:focus {
+  text-decoration: underline;
+}
+
+

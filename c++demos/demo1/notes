@@ -1,0 +1,18 @@
+//first demo notes
+node-waf configure build
+
+Handlescope does what it sounds like all allocations after this will be made on this object.
+When we leave scope GC will clean anything off that handle.
+
+Target is like is like our exports object in javascript
+
+Here we are saying we will export something named helloworld 
+
+Then we simply just allocate a new string on the v8 heap
+
+And close the scope but we want to preserve the string(or return)
+
+that simple
+
+wscript is how we tell node waf what to build, usually just steal one from another project as the defaults wont change target and source obviously will. For now keep it simple.
+
